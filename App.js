@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Dimensions,
   Image,
@@ -7,7 +6,9 @@ import {
   Text,
   View,
 } from 'react-native';
+
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React from 'react';
 
 const {width, height} = Dimensions.get('window');
 
@@ -121,6 +122,9 @@ const App = () => {
           ]}>
           {timerText}
         </Text>
+        {!isGameStarted && highScore == 0 && (
+          <Text style={{color: 'white'}}>To start game hold white circle</Text>
+        )}
       </View>
       <Pressable
         style={styles.container}
@@ -158,7 +162,8 @@ const styles = StyleSheet.create({
   timerContainer: {
     position: 'absolute',
     paddingBottom: width * 0.6 + 120,
-    width: 96,
+    width: width,
+    alignItems: 'center',
   },
   timer: {
     fontSize: 32,
